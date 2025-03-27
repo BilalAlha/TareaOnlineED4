@@ -122,7 +122,7 @@ public class Hotel {
     }
 
     /**
-     * Muestra todos los empleados registrados.
+     * Muestra todos los empleados registrados..
      *
      * @param empleados Lista de empleados.
      */
