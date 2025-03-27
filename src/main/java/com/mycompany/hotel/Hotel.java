@@ -1,5 +1,9 @@
 package com.mycompany.hotel;
 
+/**
+ * Clase principal del sistema de gestión de un hotel. Permite registrar,
+ * eliminar y mostrar clientes, empleados y habitaciones.
+ */
 import com.mycompany.hotel.objetos.ClienteBAH;
 import com.mycompany.hotel.objetos.EmpleadoBAH;
 import com.mycompany.hotel.objetos.HabitacionBAH;
@@ -8,6 +12,11 @@ import java.util.Scanner;
 
 public class Hotel {
 
+    /**
+     * Método principal que gestiona la interacción con el usuario.
+     *
+     * @param args Argumentos de la línea de comandos (no utilizados).
+     */
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
         ArrayList<ClienteBAH> clientes = new ArrayList<ClienteBAH>();
@@ -71,15 +80,15 @@ public class Hotel {
 
                     break;
                 case 7:
-                opcion7(clientes);
+                    opcion7(clientes);
 
                     break;
                 case 8:
-                opcion8(empleados);
+                    opcion8(empleados);
 
                     break;
                 case 9:
-                opcion9(habitaciones);
+                    opcion9(habitaciones);
 
                     break;
                 case 10:
@@ -92,11 +101,16 @@ public class Hotel {
         } while (opcion != 10);
     }
 
+    /**
+     * Muestra todas las habitaciones registradas.
+     *
+     * @param habitaciones Lista de habitaciones.
+     */
     private static void opcion9(ArrayList<HabitacionBAH> habitaciones) {
         if (habitaciones.isEmpty()) {
             System.out.println("No hay habitaciones para mostrar...");
         } else {
-            
+
             for (HabitacionBAH claseAMostrar : habitaciones) {
                 System.out.println("ID: " + claseAMostrar.getIdHabitacion());
                 System.out.println("Tipo: " + claseAMostrar.getTipo());
@@ -107,11 +121,17 @@ public class Hotel {
         }
     }
 
+    /**
+     * Muestra todos los empleados registrados.
+     *
+     * @param empleados Lista de empleados.
+     */
+
     private static void opcion8(ArrayList<EmpleadoBAH> empleados) {
         if (empleados.isEmpty()) {
             System.out.println("No hay profesores para mostrar...");
         } else {
-            
+
             for (EmpleadoBAH empleadoAMostrar : empleados) {
                 System.out.println("ID: " + empleadoAMostrar.getIdEmpleado());
                 System.out.println("Nombre: " + empleadoAMostrar.getNombre());
@@ -123,6 +143,11 @@ public class Hotel {
         }
     }
 
+    /**
+     * Muestra todos los clientes registrados.
+     *
+     * @param clientes Lista de clientes.
+     */
     private static void opcion7(ArrayList<ClienteBAH> clientes) {
         if (clientes.isEmpty()) {
             System.out.println("No hay clientes para mostrar...");
@@ -138,6 +163,12 @@ public class Hotel {
         }
     }
 
+    /**
+     * Elimina una habitación del sistema.
+     *
+     * @param teclado Scanner para entrada de datos.
+     * @param habitaciones Lista de habitaciones.
+     */
     private static HabitacionBAH opcion6(Scanner teclado, ArrayList<HabitacionBAH> habitaciones, HabitacionBAH habitacion) {
         int idCliente;
         System.out.println("Introduzca el id de la habitación a eliminar: ");
@@ -145,19 +176,25 @@ public class Hotel {
         if (habitaciones.isEmpty()) {
             System.out.println("No hay habitaciones para borrar...");
         } else {
-            
+
             for (HabitacionBAH clienteABorrar : habitaciones) {
                 if (clienteABorrar.getIdHabitacion() == idCliente) {
                     habitacion = clienteABorrar;
-                    
+
                 }
             }
-            
+
             habitaciones.remove(habitacion);
         }
         return habitacion;
     }
 
+    /**
+     * Agrega una nueva habitación al sistema.
+     *
+     * @param teclado Scanner para entrada de datos.
+     * @param habitaciones Lista de habitaciones.
+     */
     private static HabitacionBAH opcion5(Scanner teclado, HabitacionBAH habitacion, ArrayList<HabitacionBAH> habitaciones) {
         int idHabitacion;
         String tipo;
@@ -181,6 +218,12 @@ public class Hotel {
         return habitacion;
     }
 
+    /**
+     * Da de baja a un empleado.
+     *
+     * @param teclado Scanner para entrada de datos.
+     * @param empleados Lista de empleados.
+     */
     private static EmpleadoBAH opcion4(Scanner teclado, ArrayList<EmpleadoBAH> empleados, EmpleadoBAH empleado) {
         int idCliente;
         System.out.println("Introduzca el id del empleado a dar de baja: ");
@@ -188,11 +231,11 @@ public class Hotel {
         if (empleados.isEmpty()) {
             System.out.println("No hay empleados para dar de baja...");
         } else {
-            
+
             for (EmpleadoBAH clienteABorrar : empleados) {
                 if (clienteABorrar.getIdEmpleado() == idCliente) {
                     empleado = clienteABorrar;
-                    
+
                 }
             }
             empleados.remove(empleado);
@@ -200,6 +243,12 @@ public class Hotel {
         return empleado;
     }
 
+    /**
+     * Registra un nuevo empleado.
+     *
+     * @param teclado Scanner para entrada de datos.
+     * @param empleados Lista de empleados.
+     */
     private static EmpleadoBAH opcion3(Scanner teclado, EmpleadoBAH empleado, ArrayList<EmpleadoBAH> empleados) {
         int idEmpleado;
         String nombre;
@@ -226,6 +275,12 @@ public class Hotel {
         return empleado;
     }
 
+    /**
+     * Da de baja a un cliente.
+     *
+     * @param teclado Scanner para entrada de datos.
+     * @param clientes Lista de clientes.
+     */
     private static void opcion2(Scanner teclado, ArrayList<ClienteBAH> clientes) {
         int idCliente;
         System.out.println("Introduzca el id del cliente a dar de baja: ");
@@ -241,6 +296,12 @@ public class Hotel {
         }
     }
 
+    /**
+     * Registra un nuevo cliente.
+     *
+     * @param teclado Scanner para entrada de datos.
+     * @param clientes Lista de clientes.
+     */
     private static void opcion(Scanner teclado, ArrayList<ClienteBAH> clientes) {
         int idCliente;
         ClienteBAH cliente;
